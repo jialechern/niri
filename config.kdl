@@ -92,12 +92,24 @@ input {
 // https://yalter.github.io/niri/Configuration:-Outputs
 // 记得通过删除 "/-" 取消注释节点！
 
+// 主显示器
 output "eDP-1" {
     mode "1920x1080@60.056"
     scale 1.0
     position x=0 y=0
     focus-at-startup
 }
+
+// HDMI 口显示器
+output "HDMI-A-1" {
+    mode "1920x1080@60.000"
+    scale 1.0
+    position x=0 y=1080
+    focus-at-startup
+}
+
+// 导入其它本地显示器配置
+include "local-monitor.kdl"
 
 /-output "eDP-1" {
     // 取消注释此行以禁用此输出

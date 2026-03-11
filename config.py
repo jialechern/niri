@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+from pathlib import Path
+from typing import Iterable
+
+require_files: Iterable[Path] = map(lambda f_str: Path(__file__).parent/f_str, [
+    "local-monitor.kdl",
+])
+
+
+def local_monitor_preload() -> None:
+    file: Path = Path(__file__).parent / "local-monitor.kdl"
+
+    preload_content: str = """// local-monitor.kdl
+/-output "eDP-1" {
+    // 取消注释此行以禁用此输出
+    // off
+
+    // 输出的分辨率和可选刷新率
+    // 格式为 "<宽度>x<高度>" 或 "<宽度>x<高度>@<刷新率>"
+    // 如果省略刷新率，niri 将为此分辨率选择最高刷新率
+    // 如果完全省略模式或模式无效，niri 将自动选择一个
+    // 在 niri 实例中运行 `niri msg outputs` 以列出所有输出及其模式
+    mode "1920x1080@120.030"
+
+    // 可使用整数或小数缩放，例如使用 1.5 表示 150% 缩放
+    scale 2
+
+    // 变换允许逆时针旋转输出，有效值为：
+    // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
+    transform "normal"
+
+    // 输出在全局坐标空间中的位置
+    // 这会影响方向性显示器操作，如 "focus-monitor-left" 和光标移动
+    // 光标只能在直接相邻的输出之间移动
+    // 定位时必须考虑输出缩放和旋转：
+    // 输出大小以逻辑（或缩放后的）像素为单位
+    // 例如，3840×2160 输出，缩放 2.0 将具有 1920×1080 的逻辑大小，
+    // 因此要在其右侧直接放置另一个输出，将其 x 设置为 1920
+    // 如果未设置位置或导致重叠，输出将自动放置
+    position x=1280 y=0
+}
+
+// 影响窗口定位和大小的设置
+// 更多信息请查阅维基：
+// https://yalter.github.io/niri/Configuration:-Layout
+"""
+
+    if (not file.exists()) or file.stat().st_size == 0:
+        file.write_text(preload_content, encoding="utf-8")
+
+
+def main() -> None:
+    for file in require_files:
+        file.touch(exist_ok=True)
+
+    local_monitor_preload()
+
+
+if __name__ == '__main__':
+    main()
