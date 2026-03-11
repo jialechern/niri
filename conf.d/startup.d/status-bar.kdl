@@ -1,0 +1,6 @@
+// status-bar.kdl
+// 此处存放 niri 状态栏的启动以及对应的配置程序的启动
+
+// 启动 waybar
+spawn-at-startup "waybar"
+

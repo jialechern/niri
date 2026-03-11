@@ -1,0 +1,5 @@
+// fcitx5.kdl
+// 此处配置运行 fcitx5 输入法时必要的环境变量
+
+XMODIFIERS "@im=fcitx"
+

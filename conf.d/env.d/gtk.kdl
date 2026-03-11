@@ -1,0 +1,6 @@
+// gtk.kdl
+// 此处存放 gtk 应用运行时一些 必要/可选的环境变量
+
+// gtk 主题设置
+GTK_THEME "Nordic:dark"
+

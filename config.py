@@ -1,16 +1,56 @@
 #!/usr/bin/env python3
 from pathlib import Path
-from typing import Iterable
-
-require_files: Iterable[Path] = map(lambda f_str: Path(__file__).parent/f_str, [
-    "local-monitor.kdl",
-])
+from enum import Enum, auto
+from dataclasses import dataclass
 
 
-def local_monitor_preload() -> None:
-    file: Path = Path(__file__).parent / "local-monitor.kdl"
+CWD: Path = Path(__file__).parent
 
-    preload_content: str = """// local-monitor.kdl
+
+class Type(Enum):
+    FILE = auto()
+    DIRECTORY = auto()
+
+
+@dataclass
+class RequireObj:
+    type: Type
+    path: Path
+
+
+require_files: list[RequireObj] = [
+    # 需要的目录应当放在文件之前
+    RequireObj(type=Type.DIRECTORY, path=CWD/"conf.d/local-override.d"),
+    # 需要的文件
+    RequireObj(type=Type.FILE, path=CWD/"conf.d/local-override.kdl"),
+    RequireObj(type=Type.FILE, path=CWD/"conf.d/local-override.d/local-monitor.kdl"),
+]
+
+
+def local_require_object_preload(file: Path, preload_content: str) -> None:
+    if (not file.exists()) or file.stat().st_size == 0:
+        file.write_text(preload_content, encoding="utf-8")
+
+
+def main() -> None:
+    for item in require_files:
+        match item.type:
+            case Type.FILE:
+                item.path.touch(exist_ok=True)
+            case Type.DIRECTORY:
+                item.path.mkdir(parents=True, exist_ok=True)
+
+    local_require_object_preload(
+        file=CWD/"conf.d/local-override.kdl",
+        preload_content="""// local-override.kdl
+// 此处存放特定机器的特殊配置
+include "local-override.d/local-monitor.kdl"
+""")
+
+    local_require_object_preload(
+        file=CWD/"conf.d/local-override.d/local-monitor.kdl",
+        preload_content="""// local-monitor.kdl
+// 显示器配置模板
 /-output "eDP-1" {
     // 取消注释此行以禁用此输出
     // off
@@ -43,17 +83,7 @@ def local_monitor_preload() -> None:
 // 影响窗口定位和大小的设置
 // 更多信息请查阅维基：
 // https://yalter.github.io/niri/Configuration:-Layout
-"""
-
-    if (not file.exists()) or file.stat().st_size == 0:
-        file.write_text(preload_content, encoding="utf-8")
-
-
-def main() -> None:
-    for file in require_files:
-        file.touch(exist_ok=True)
-
-    local_monitor_preload()
+""")
 
 
 if __name__ == '__main__':

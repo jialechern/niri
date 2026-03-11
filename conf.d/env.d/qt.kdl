@@ -1,0 +1,6 @@
+// qt.kdl
+// 此处存放 Qt 应用运行时 必要/可选 的环境变量配置
+
+// qt 软件样式配置
+QT_QPA_PLATFORMTHEME "qt6ct"
+

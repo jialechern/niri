@@ -1,0 +1,34 @@
+// startup.kdl
+// 此处存放 niri 环境初始化过程中 必要/可选 的自启动程序
+
+// 添加类似此行以在启动时生成进程
+// 注意：作为会话运行 niri 支持 xdg-desktop-autostart，使用起来可能更方便
+// 要运行 shell 命令（包含变量、管道等），请使用 spawn-sh-at-startup：
+// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
+// 更多生成示例请参阅下面的 binds 部分
+
+// 桌面后端配置
+include "startup.d/desktop.kdl"
+
+// 状态栏配置
+include "startup.d/status-bar.kdl"
+
+// 护眼模式配置
+spawn-at-startup "wlsunset" "-l" "40.0" "-L" "116.0"
+
+// 自启动消息通知
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+spawn-at-startup "mako"
+
+// 自启动输入法
+spawn-at-startup "fcitx5"
+
+// 自启动锁屏
+spawn-at-startup "~/.config/niri/scripts/swayidle.sh"
+
+// 剪贴板管理器
+spawn-at-startup "wl-clip-persist" "--clipboard" "regular"
+
+// 壁纸工具设置
+spawn-at-startup "swww-daemon"
+
