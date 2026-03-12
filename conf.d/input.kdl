@@ -3,7 +3,6 @@
 // 完整选项列表请查阅维基：
 // https://yalter.github.io/niri/Configuration:-Input
 input {
-
     keyboard {
         xkb {
         // 可设置规则、模型、布局、变体和选项

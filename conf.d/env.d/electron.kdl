@@ -1,6 +1,0 @@
-// electron.kdl
-// 此处配置在 Wayland 中运行 Electron 应用必要的环境变量
-
-ELECTRON_OZONE_PLATFORM_HINT "auto"
-ELECTRON_ENABLE_FEATURES "WaylandWindowDecorations"
-

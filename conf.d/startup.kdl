@@ -7,11 +7,47 @@
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 // 更多生成示例请参阅下面的 binds 部分
 
-// 桌面后端配置
-include "startup.d/desktop.kdl"
+// --- --- --- 桌面后端配置 --- --- ---
+// 设置默认的图形化后端
+spawn-at-startup "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=niri & /usr/lib/xdg-desktop-portal-gtk"
 
+// 深色模式
+spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "color-scheme" "prefer-dark"
+spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "icon-theme" "'Papirus-Dark'"
+spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "gtk-theme" "Nordic"
+
+// 终端模拟器
+spawn-at-startup "xdg-mime" "default" "ghostty.desktop" "x-scheme-handler/terminal"
+
+// 文件管理器
+spawn-at-startup "xdg-settings" "set" "default-web-browser" "firefox.desktop"
+spawn-at-startup "xdg-mime" "default" "thunar.desktop" "inode/directory"
+
+// 默认图片启动器
+spawn-at-startup "xdg-mime" "default" "org.gnome.Loupe.desktop" "image/jpeg"
+spawn-at-startup "xdg-mime" "default" "org.gnome.Loupe.desktop" "image/png"
+spawn-at-startup "xdg-mime" "default" "org.gnome.Loupe.desktop" "image/gif"
+spawn-at-startup "xdg-mime" "default" "org.gnome.Loupe.desktop" "image/webp"
+spawn-at-startup "xdg-mime" "default" "org.gnome.Loupe.desktop" "image/bmp"
+spawn-at-startup "xdg-mime" "default" "org.gnome.Loupe.desktop" "image/tiff"
+spawn-at-startup "xdg-mime" "default" "org.gnome.Loupe.desktop" "image/svg+xml"
+
+// 默认电子书查看器
+spawn-at-startup "xdg-mime" "default" "org.pwmt.zathura.desktop" "application/pdf"
+spawn-at-startup "xdg-mime" "default" "org.pwmt.zathura.desktop" "application/epub+zip"
+spawn-at-startup "xdg-mime" "default" "org.pwmt.zathura.desktop" "application/x-filler"
+spawn-at-startup "xdg-mime" "default" "org.pwmt.zathura.desktop" "image/vnd.djvu"
+spawn-at-startup "xdg-mime" "default" "org.pwmt.zathura.desktop" "application/x-cbr"
+spawn-at-startup "xdg-mime" "default" "org.pwmt.zathura.desktop" "application/x-cbz"
+
+// 加载配置
+spawn-at-startup "dbus-update-activation-environment" "--all"
+spawn-at-startup "/usr/lib/xdg-desktop-portal-gtk" "-r"
+
+
+// --- --- --- 其他应用配置 --- --- ---
 // 状态栏配置
-include "startup.d/status-bar.kdl"
+spawn-at-startup "waybar"
 
 // 护眼模式配置
 spawn-at-startup "wlsunset" "-l" "40.0" "-L" "116.0"

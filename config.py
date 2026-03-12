@@ -18,12 +18,9 @@ class RequireObj:
     path: Path
 
 
+# 注意创建的先后顺序, 在创建文件时需要保证其父文件夹已经存在
 require_files: list[RequireObj] = [
-    # 需要的目录应当放在文件之前
-    RequireObj(type=Type.DIRECTORY, path=CWD/"conf.d/local-override.d"),
-    # 需要的文件
     RequireObj(type=Type.FILE, path=CWD/"conf.d/local-override.kdl"),
-    RequireObj(type=Type.FILE, path=CWD/"conf.d/local-override.d/local-monitor.kdl"),
 ]
 
 
@@ -44,12 +41,9 @@ def main() -> None:
         file=CWD/"conf.d/local-override.kdl",
         preload_content="""// local-override.kdl
 // 此处存放特定机器的特殊配置
-include "local-override.d/local-monitor.kdl"
-""")
 
-    local_require_object_preload(
-        file=CWD/"conf.d/local-override.d/local-monitor.kdl",
-        preload_content="""// local-monitor.kdl
+
+// --- --- --- 额外显示器配置 --- --- ---
 // 显示器配置模板
 /-output "eDP-1" {
     // 取消注释此行以禁用此输出
@@ -83,6 +77,7 @@ include "local-override.d/local-monitor.kdl"
 // 影响窗口定位和大小的设置
 // 更多信息请查阅维基：
 // https://yalter.github.io/niri/Configuration:-Layout
+
 """)
 
 
