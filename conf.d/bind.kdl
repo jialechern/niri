@@ -91,11 +91,13 @@ binds {
     // 也可以将鼠标移动到左上角的热点区域，
     // 或者在触摸板上进行四指向上滑动。
     Mod+O repeat=false { toggle-overview; }
+    Mod+Tab repeat=false { toggle-overview; }
 
 
     // --- --- --- 窗口行为快捷键 --- --- ---
     // --- 关闭窗口 ---
     Mod+Q repeat=false { close-window; }
+    Mod+X repeat=false { close-window; }
 
     // --- 切换 列/窗口 焦点 ---
     Mod+Left  { focus-column-left; }
@@ -129,6 +131,7 @@ binds {
 
     // 列居中
     Mod+C { center-column; }
+    Mod+Z { center-column; }
 
     // 以下绑定将焦点窗口移入或移出列。
     // 如果窗口是独立的，它们会将其吸收到侧边的相邻列中。
@@ -139,25 +142,34 @@ binds {
     // 从右侧吸收一个窗口到焦点列的底部。
     Mod+BracketLeft  { consume-window-into-column; }
     Mod+Shift+Comma  { consume-window-into-column; }
+    Mod+Ctrl+Comma  { consume-window-into-column; }
+    Mod+Alt+Comma  { consume-window-into-column; }
 
     // 将焦点列底部的窗口排出到右侧。
     Mod+BracketRight { expel-window-from-column; }
     Mod+Shift+Period { expel-window-from-column; }
+    Mod+Ctrl+Period { expel-window-from-column; }
+    Mod+Alt+Period { expel-window-from-column; }
 
     // --- 调整 列/窗口 大小 --- 
     // 顺序/相反顺序 循环切换预设宽度。
     Mod+Backslash { switch-preset-column-width; }
     Mod+Shift+Backslash { switch-preset-column-width-back; }
+    Mod+Ctrl+Backslash { switch-preset-column-width-back; }
+    Mod+Alt+Backslash { switch-preset-column-width-back; }
 
     // 顺序/相反顺序 循环切换预设高度。
     Mod+R { switch-preset-window-height; }
     Mod+Shift+R { switch-preset-window-height-back; }
+    Mod+Ctrl+R { switch-preset-window-height-back; }
+    Mod+Alt+R { switch-preset-window-height-back; }
 
     // 最大化
     Mod+F { maximize-column; }
 
     // 重置高度
     Mod+Shift+F { reset-window-height; }
+    Mod+Alt+F { reset-window-height; }
 
     // 将焦点列扩展到未被其他完全可见列占据的空间。
     // 使该列“填充剩余空间”。
@@ -165,6 +177,7 @@ binds {
 
     // 全屏模式
     Mod+Ctrl+Shift+F { fullscreen-window; }
+    Mod+Ctrl+Alt+F { fullscreen-window; }
 
     // 在屏幕上居中所有完全可见的列。
     Mod+Ctrl+C { center-visible-columns; }
@@ -187,6 +200,8 @@ binds {
     // 在浮动布局和平铺布局之间移动焦点窗口。
     Mod+V       { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+Ctrl+V { switch-focus-between-floating-and-tiling; }
+    Mod+Alt+V { switch-focus-between-floating-and-tiling; }
 
     // 切换列标签页显示模式。
     // 此列中的窗口将显示为垂直标签页，
@@ -241,6 +256,11 @@ binds {
     Mod+7 { focus-workspace 7; }
     Mod+8 { focus-workspace 8; }
     Mod+9 { focus-workspace 9; }
+    
+    // 在当前工作区和上一个工作区之间切换焦点。
+    // Mod+Tab { focus-workspace-previous; }
+    Mod+Grave { focus-workspace-previous; }
+    Mod+Apostrophe { focus-workspace-previous; }
 
     // --- 跨工作空间移动列 ---
     Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
@@ -271,13 +291,12 @@ binds {
     // --- 移动工作空间 ---
     Mod+Shift+Page_Down { move-workspace-down; }
     Mod+Shift+N         { move-workspace-down; }
+    Mod+Alt+N         { move-workspace-down; }
     Mod+Shift+Page_Up   { move-workspace-up; }
     Mod+Shift+P         { move-workspace-up; }
+    Mod+Alt+P         { move-workspace-up; }
     Mod+Shift+U         { move-workspace-down; }
     Mod+Shift+I         { move-workspace-up; }
-    
-    // 在当前工作区和上一个工作区之间切换焦点。
-    // Mod+Tab { focus-workspace-previous; }
 
 
     // --- --- --- 显示器行为快捷键 --- --- ---

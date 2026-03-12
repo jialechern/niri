@@ -19,6 +19,13 @@ spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "gtk-theme" "No
 // 终端模拟器
 spawn-at-startup "xdg-mime" "default" "ghostty.desktop" "x-scheme-handler/terminal"
 
+// 文本编辑器
+spawn-at-startup "xdg-mime" "default" "nvim.desktop" "text/plain"
+spawn-at-startup "xdg-mime" "default" "nvim.desktop" "text/markdown"
+spawn-at-startup "xdg-mime" "default" "nvim.desktop" "text/x-tex"
+spawn-at-startup "xdg-mime" "default" "nvim.desktop" "text/x-python"
+spawn-at-startup "xdg-mime" "default" "nvim.desktop" "text/x-shellscript"
+
 // 文件管理器
 spawn-at-startup "xdg-settings" "set" "default-web-browser" "firefox.desktop"
 spawn-at-startup "xdg-mime" "default" "thunar.desktop" "inode/directory"

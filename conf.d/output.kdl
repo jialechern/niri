@@ -6,7 +6,7 @@
 // https://yalter.github.io/niri/Configuration:-Outputs
 
 // 输出设备配置模板
-/-output "eDP-1" {
+/- output "eDP-1" {
     // 取消注释此行以禁用此输出
     // off
 
@@ -36,7 +36,7 @@
 }
 
 // 主显示器
-output "eDP-1" {
+/- output "eDP-1" {
     mode "1920x1080@60.056"
     scale 1.0
     position x=0 y=0
@@ -44,7 +44,7 @@ output "eDP-1" {
 }
 
 // HDMI 口显示器
-output "HDMI-A-1" {
+/- output "HDMI-A-1" {
     mode "1920x1080@60.000"
     scale 1.0
     position x=0 y=1080
