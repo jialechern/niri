@@ -9,23 +9,10 @@
 
 // --- --- --- 应用程序配置 --- --- ---
 // 状态栏配置
-spawn-at-startup "waybar"
-
-// 护眼模式配置
-spawn-at-startup "wlsunset" "-l" "40.0" "-L" "116.0"
-
-// 自启动消息通知
-spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-spawn-at-startup "mako"
+// spawn-at-startup "waybar"
 
 // 自启动输入法
 spawn-at-startup "fcitx5"
-
-// 自启动锁屏
-spawn-at-startup "~/.config/niri/scripts/swayidle.sh"
-
-// 剪贴板管理器
-spawn-at-startup "wl-clip-persist" "--clipboard" "regular"
 
 // 壁纸工具设置
 spawn-at-startup "swww-daemon"
