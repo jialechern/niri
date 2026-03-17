@@ -7,8 +7,10 @@
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 // 更多生成示例请参阅下面的 binds 部分
 
-// --- --- --- 应用程序配置 --- --- ---
+// --- --- --- niri 初始化配置 --- --- ---
 
-// 自启动输入法
-spawn-at-startup "fcitx5"
+// 导入环境变量到 Systemd
+spawn-at-startup "dbus-update-activation-environment" "--all"
+
+// --- --- --- 应用程序配置 --- --- ---
 

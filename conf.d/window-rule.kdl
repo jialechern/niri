@@ -19,7 +19,7 @@ window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
     // --- 不透明度 ---
-    opacity 1.0
+    opacity 0.95
     draw-border-with-background false
 }
 
