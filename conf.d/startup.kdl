@@ -8,12 +8,7 @@
 // 更多生成示例请参阅下面的 binds 部分
 
 // --- --- --- 应用程序配置 --- --- ---
-// 状态栏配置
-// spawn-at-startup "waybar"
 
 // 自启动输入法
 spawn-at-startup "fcitx5"
-
-// 壁纸工具设置
-spawn-at-startup "swww-daemon"
 

@@ -349,7 +349,7 @@ binds {
     Mod+E hotkey-overlay-title="文件管理器" { spawn "Thunar"; }
 
     // 锁屏配置
-    Super+Ctrl+Alt+Shift+L hotkey-overlay-title="锁屏" { spawn "~/.config/niri/scripts/swaylock.sh"; }
+    Super+Ctrl+Alt+Shift+L hotkey-overlay-title="锁屏" { spawn "swaylock"; }
 
 
     // 选择区域截图
