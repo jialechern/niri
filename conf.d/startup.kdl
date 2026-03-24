@@ -11,6 +11,8 @@
 
 // 导入环境变量到 Systemd
 spawn-at-startup "dbus-update-activation-environment" "--all"
+// 启用 XWayland 支持
+spawn-at-startup "xwayland-satellite"
 
 // --- --- --- 应用程序配置 --- --- ---
 
