@@ -359,6 +359,9 @@ binds {
     // 截取当前窗口
     Mod+Ctrl+S { screenshot-window; }
 
+    // 打开剪切板历史
+    Mod+Ctrl+X { spawn "ghostty" "-e" "sh" "-c" "cliphist list | fzf | cliphist decode | wl-copy"; }
+
     // 开启/隐藏 状态栏
     // Mod+B { spawn "killall" "-SIGUSR1" "waybar"; }
     Mod+B { spawn "systemctl" "--user" "kill" "-s" "SIGUSR1" "waybar"; }
