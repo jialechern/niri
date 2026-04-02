@@ -143,5 +143,21 @@ layout {
         // top 64
         // bottom 64
     }
+
+    // 背景颜色(主要用于 `toggle-overview` 模式的背景)
+    background-color "transparent"
+}
+
+// 让 swww 的壁纸同时进入 overview 的 backdrop
+layer-rule {
+    match namespace="^(swww-daemon|awww-daemon)$"
+    place-within-backdrop true
+}
+
+// 可选: 去掉 Overview 里工作区阴影, 画面更干净
+overview {
+    workspace-shadow {
+        off
+    }
 }
 
