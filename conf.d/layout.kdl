@@ -145,48 +145,35 @@ layout {
         // inactive-color "#00000054"
     }
 
-    // 标签指示器，用于标识列中的活动窗口（配合 tabbed 显示模式使用）
+    // 标签指示器 — 标识列中活动窗口（仅 tabbed 显示模式下可见）
     tab-indicator {
-        // off
-        // on
+        on
 
-        // 列中仅有一个标签时隐藏指示器
-        // hide-when-single-tab
-
-        // 将指示器放在列内而非列外
-        // place-within-column
-
-        // 指示器与列边缘的间距
-        // gap 5
-
-        // 指示器宽度
-        // width 4
-
-        // 指示器长度占比
-        // length total-proportion=1.0
+        // 列中仅有一个窗口时隐藏指示器，不碍眼
+        hide-when-single-tab
 
         // 指示器位置："left"、"right"、"top"、"bottom"
-        // position "right"
+        position "right"
 
-        // 标签之间的间距
-        // gaps-between-tabs 2
+        // 指示器宽度
+        width 4
+
+        // 活动/非活动颜色与上方 border 配色保持一致
+        active-color "#ffc87f"
+        inactive-color "#505050"
 
         // 圆角半径
         // corner-radius 8
 
-        // 活动列指示器颜色
-        // active-color "red"
+        // 标签之间的间距
+        // gaps-between-tabs 2
 
-        // 非活动列指示器颜色
-        // inactive-color "gray"
-
-        // 紧急列指示器颜色
-        // urgent-color "blue"
+        // 将指示器放在列内而非列外
+        // place-within-column
 
         // 也可使用渐变
         // active-gradient from="#80c8ff" to="#bbddff" angle=45
         // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
-        // urgent-gradient from="#800" to="#a33" angle=45
     }
 
     // 拖放插入位置提示
@@ -216,17 +203,5 @@ layout {
     background-color "transparent"
 }
 
-// 让 swww 的壁纸同时进入 overview 的 backdrop
-layer-rule {
-    match namespace="^(swww-daemon|awww-daemon)$"
-    place-within-backdrop true
-}
 
-// 可选: 去掉 Overview 里工作区阴影, 画面更干净
-// 也可配置 softness、spread、offset、color 来调整阴影外观
-overview {
-    workspace-shadow {
-        off
-    }
-}
 

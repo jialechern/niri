@@ -99,8 +99,6 @@ binds {
     // 也可以将鼠标移动到左上角的热点区域，
     // 或者在触摸板上进行四指向上滑动。
     Mod+O repeat=false { toggle-overview; }
-    Mod+Tab repeat=false { toggle-overview; }
-
 
     // --- --- --- 窗口行为快捷键 --- --- ---
     // --- 关闭窗口 ---

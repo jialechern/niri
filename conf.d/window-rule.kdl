@@ -1,6 +1,12 @@
 // window-rule.kdl
 // 此处存放 niri 环境中 必要/可选 的窗口规则配置
 
+// 让 awww/swww 的壁纸同时进入 overview 的 backdrop
+layer-rule {
+    match namespace="^(swww-daemon|awww-daemon)$"
+    place-within-backdrop true
+}
+
 // 匹配器（match）完整列表:
 //   match app-id="..." — 按 app-id 匹配
 //   match title="..."  — 按窗口标题匹配
@@ -31,8 +37,25 @@ window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
     // --- 不透明度 ---
-    opacity 0.95
+    // 提示：透明度越低毛玻璃越明显，可尝试 0.85 ~ 0.92
+    opacity 0.85
     draw-border-with-background false
+    // --- 毛玻璃背景特效 ---
+    background-effect {
+        blur true
+        noise 0.03
+        saturation 1.6
+    }
+    // --- 右键菜单等弹出窗口 ---
+    popups {
+        opacity 0.88
+        geometry-corner-radius 15
+        background-effect {
+            blur true
+            noise 0.03
+            saturation 1.6
+        }
+    }
 }
 
 // 通过设置空默认列宽度解决 WezTerm 的初始配置错误

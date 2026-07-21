@@ -142,50 +142,38 @@ overview {
     zoom 0.61
     // 预览时背景颜色
     // backdrop-color "#777777"
+
+    // 去掉 Overview 里工作区阴影，画面更干净
+    // 也可配置 softness、spread、offset、color 来调整阴影外观
+    workspace-shadow {
+        off
+    }
 }
 
 // 窗口规则配置
 include "conf.d/window-rule.kdl"
 
-// --- 以下为新增 niri 功能块，默认全部注释 ---
-
 // --- 最近窗口切换器（Alt+Tab 风格） ---
-// 注意：默认 Mod+Tab 绑定会与现有 toggle-overview 绑定冲突，启用此块前需二选一
-/- recent-windows {
-    // 完全禁用最近窗口切换器
-    // off
+recent-windows {
+    // 立即弹出, 无延迟
+    open-delay-ms 0
 
-    // 窗口进入最近列表的防抖时间，单位毫秒，默认 750，设 0 即时提交
-    // debounce-ms 750
+    highlight {
+        active-color "#ffc87fff"
+        urgent-color "#9b0000ff"
+        padding 30
+        corner-radius 12
+    }
 
-    // 打开切换器的延迟时间，默认 150ms，设 0 即时弹出
-    // open-delay-ms 150
+    previews {
+        max-height 480
+        max-scale 0.5
+    }
 
-    // 聚焦窗口的高亮外观
-    // highlight {
-    //     active-color "#999999ff"
-    //     urgent-color "#ff9999ff"
-    //     padding 30
-    //     corner-radius 0
-    // }
-
-    // 预览图尺寸控制
-    // previews {
-    //     max-height 480
-    //     max-scale 0.5
-    // }
-
-    // /// 键位绑定
-    // binds {
-    //     Alt+Tab         { next-window; }
-    //     Alt+Shift+Tab   { previous-window; }
-    //     Mod+Tab         { next-window; }
-    //     Mod+Shift+Tab   { previous-window; }
-    //     // 限定在当前显示器范围内切换
-    //     // Mod+Tab         { next-window     scope="output"; }
-    //     // 仅按 app-id 分组过滤
-    //     // Mod+grave       { next-window     filter="app-id"; }
-    // }
+    binds {
+        Mod+Tab         { next-window; }
+        Mod+Shift+Tab   { previous-window; }
+    }
 }
 
 // --- 硬件开关事件（笔记本盖子、平板模式） ---
@@ -310,6 +298,20 @@ include "conf.d/window-rule.kdl"
 // 禁用主剪贴板（中键粘贴），仅对之后启动的应用生效
 clipboard {
     disable-primary
+}
+
+// --- 毛玻璃模糊特效 ---
+// 全局模糊参数，配合窗口规则中的 background-effect { blur true; } 使用
+// passes: 下采样/上采样轮数，越多越光滑但更消耗 GPU
+// offset: 每轮的像素偏移倍率，越大越光滑（不增加 GPU 开销），但过高会产生伪影
+// noise: 在模糊上叠加微噪声，防止色带伪影
+// saturation: 饱和度增强，让玻璃背后的颜色更鲜亮
+blur {
+    // off —— 取消此行注释以禁用全局模糊
+    passes 3
+    offset 3.0
+    noise 0.03
+    saturation 1.6
 }
 
 // 配置按键绑定
