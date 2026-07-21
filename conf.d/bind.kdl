@@ -87,6 +87,14 @@ binds {
     // 例如移动鼠标或按下任何其他键。
     Mod+Ctrl+Shift+P { power-off-monitors; }
 
+    // --- 调试快捷键 ---
+    // 切换调试着色（配合 debug 块使用）
+    // Mod+Shift+Ctrl+T { toggle-debug-tint; }
+    // 切换不透明区域调试显示
+    // Mod+Shift+Ctrl+O { debug-toggle-opaque-regions; }
+    // 切换重绘区域调试显示
+    // Mod+Shift+Ctrl+D { debug-toggle-damage; }
+
     // 打开/关闭概览：一个工作区和窗口的缩略视图。
     // 也可以将鼠标移动到左上角的热点区域，
     // 或者在触摸板上进行四指向上滑动。
@@ -334,6 +342,13 @@ binds {
 
 
     // --- --- --- 其它应用 --- --- ---
+    // spawn 可用属性:
+    //   allow-when-locked=true   — 会话锁定时仍可用
+    //   hotkey-overlay-title="…" — 快捷键列表中显示的自定义标题
+    //   hotkey-overlay-title=null — 从快捷键列表中隐藏
+    //   working-directory="/path" — 设置进程的工作目录
+    //   repeat=false             — 禁用按键重复
+    //   cooldown-ms=150          — 冷却时间，单位毫秒
     // 终端模拟器配置
     Mod+T hotkey-overlay-title="终端模拟器 ghostty" { spawn "ghostty"; }
     Ctrl+Alt+T hotkey-overlay-title="终端模拟器 alacritty" { spawn "alacritty"; }

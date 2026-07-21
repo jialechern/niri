@@ -24,6 +24,25 @@
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
     transform "normal"
 
+    // 启用可变刷新率（FreeSync/G-Sync）
+    // 可追加 on-demand=true 配合窗口规则按需启用
+    // variable-refresh-rate
+    // variable-refresh-rate on-demand=true
+
+    // 每个显示器独立的背景色（alpha 通道会被忽略）
+    // backdrop-color "#001100"
+
+    // 最大色彩深度，如 8 或 10
+    // max-bpc 8
+
+    // 热角配置（覆盖全局 gestures 中的 hot-corners 设置）
+    // 可启用 top-left、top-right、bottom-left、bottom-right
+    // 或设 off 全部关闭
+    // hot-corners {
+    //     bottom-left
+    //     bottom-right
+    // }
+
     // 输出在全局坐标空间中的位置
     // 这会影响方向性显示器操作，如 "focus-monitor-left" 和光标移动
     // 光标只能在直接相邻的输出之间移动
@@ -50,4 +69,22 @@
     position x=0 y=1080
     focus-at-startup
 }
+
+// 使用 Modeline 自定义显示器模式（覆盖 mode 设置）
+// 警告：错误的 modeline 参数可能损坏显示器，请谨慎使用
+///- output "eDP-3" {
+//     modeline 173.00  1920 2048 2248 2576  1080 1083 1088 1120 "-hsync" "+vsync"
+// }
+
+// 在特定显示器上覆盖全局 layout 设置
+///- output "HDMI-A-1" {
+//     layout {
+//         gaps 16
+//         always-center-single-column
+//         tab-indicator {
+//             on
+//             position "top"
+//         }
+//     }
+// }
 
