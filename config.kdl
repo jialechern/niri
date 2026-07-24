@@ -318,5 +318,5 @@ blur {
 include "conf.d/bind.kdl"
 
 // 配置其它特殊机器的特殊需求
-include "conf.d/local-override.kdl"
+include optional=true "conf.d/local-override.kdl"
 
