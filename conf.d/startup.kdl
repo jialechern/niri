@@ -19,7 +19,7 @@ spawn-at-startup "xwayland-satellite"
 // 每次开机随机选取一张壁纸
 spawn-sh-at-startup "waypaper --backend awww --folder $HOME/Pictures/Wallpapers --random --fill fill"
 // // 每次开机选取给定路径下的 `default(不限后缀名)` 壁纸
-// spawn-sh-at-startup "fd --follow default $HOME/Pictures/Wallpapers --full-path -x waypaper --backend awww --wallpaper {} --fill fill"
+// spawn-sh-at-startup "find -L \"$HOME/Pictures/Wallpapers\" -type f -path \"*default*\" -exec waypaper --backend awww --wallpaper {} --fill fill \\;"
 
 // --- --- --- 应用程序配置 --- --- ---
 
