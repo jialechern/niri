@@ -352,8 +352,9 @@ binds {
     Ctrl+Alt+T hotkey-overlay-title="终端模拟器 alacritty" { spawn "alacritty"; }
 
     // 程序启动器配置
-    Mod+D hotkey-overlay-title="程序启动器" { spawn "fuzzel"; }
-    Alt+Space hotkey-overlay-title="程序启动器" { spawn "fuzzel"; }
+    // -no-imdkit 关闭 rofi 内置的 imdkit, 改用 GTK3 原生 IM 模块以兼容 fcitx5
+    Alt+Space hotkey-overlay-title="程序启动器" { spawn "rofi" "-show" "drun" "-no-imdkit"; }
+    Mod+D hotkey-overlay-title="命令执行器" { spawn "rofi" "-show" "run" "-no-imdkit"; }
 
     // 输入法配置
     Mod+Space hotkey-overlay-title="fcitx5" { spawn-sh "systemctl --user restart fcitx5-daemon.service"; }

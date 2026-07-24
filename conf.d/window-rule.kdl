@@ -7,9 +7,9 @@ layer-rule {
     place-within-backdrop true
 }
 
-// 使 Fuzzel 启动器获得毛玻璃模糊特效
+// 使 Rofi 启动器获得毛玻璃模糊特效
 layer-rule {
-    match namespace="^launcher$"
+    match namespace="^rofi$"
 
     opacity 0.88
 
