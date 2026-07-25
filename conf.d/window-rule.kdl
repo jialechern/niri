@@ -20,7 +20,7 @@ layer-rule {
     }
 }
 
-// 使 Waybar 状态栏获得圆角裁剪, 弹出菜单保留毛玻璃模糊
+// 使 Waybar 状态栏获得圆角裁剪与毛玻璃模糊
 layer-rule {
     match namespace="^waybar$"
 
@@ -33,6 +33,18 @@ layer-rule {
         background-effect {
             blur true
         }
+    }
+}
+
+// 使 Mako 通知弹窗获得毛玻璃模糊特效
+layer-rule {
+    match namespace="^mako$"
+
+    geometry-corner-radius 8
+    opacity 0.92
+
+    background-effect {
+        blur true
     }
 }
 
