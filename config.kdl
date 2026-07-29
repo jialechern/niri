@@ -192,28 +192,71 @@ recent-windows {
 }
 
 // --- 命名工作区（持久化工作区，即使为空也不会被自动删除） ---
-// 声明一个名为 "browser" 的持久化工作区
-// /-workspace "browser"
+// 命名工作区与普通动态工作区一样，可参与 focus-workspace-down/up 切换，
+// 声明顺序决定初始排列顺序（先声明的在上方）。
 
-// 声明一个绑定到指定显示器的工作区
-// /-workspace "chat" {
-//     open-on-output "HDMI-A-1"
+workspace "main"
+
+workspace "term"
+
+workspace "media"
+
+// --- 命名工作区可用的配置项（按需取消注释启用） ---
+//
+// 1. open-on-output — 将工作区绑定到指定显示器（多显示器场景）
+//    使用 "niri msg outputs" 获取显示器名称
+// /-workspace "main" {
+//     open-on-output "eDP-1"
 // }
-
-// 为命名工作区覆盖 layout 设置
-// /-workspace "aesthetic" {
+//
+// 2. layout { } — 为当前工作区覆盖全局布局设置
+//    可用的子项：gaps / struts / border / focus-ring / preset-column-widths
+//    / default-column-width / always-center-single-column / center-focused-column
+// /-workspace "term" {
 //     layout {
-//         gaps 32
+//         // 覆盖全局间隙大小
+//         gaps 16
+//
+//         // 覆盖工作区边距（留白区域）
 //         struts {
-//             left 64
-//             right 64
-//             bottom 64
-//             top 64
+//             left 0
+//             right 0
+//             bottom 0
+//             top 0
 //         }
+//
+//         // 覆盖窗口边框
 //         border {
 //             on
-//             width 4
+//             width 2
+//             active-color "#ffc87f"
+//             inactive-color "#505050"
 //         }
+//
+//         // 覆盖焦点环
+//         focus-ring {
+//             on
+//             width 4
+//             active-color "#7fc8ff"
+//             inactive-color "#505050"
+//         }
+//
+//         // 覆盖预设列宽
+//         preset-column-widths {
+//             proportion 0.33333
+//             proportion 0.5
+//             proportion 0.66667
+//             proportion 1.0
+//         }
+//
+//         // 覆盖默认列宽
+//         default-column-width { proportion 0.5; }
+//
+//         // 列中只有一个窗口时始终居中（设为 false 则取消）
+//         always-center-single-column false
+//
+//         // 聚焦列始终居中
+//         center-focused-column
 //     }
 // }
 
