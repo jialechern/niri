@@ -106,14 +106,24 @@ binds {
     Mod+X repeat=false { close-window; }
 
     // --- 切换 列/窗口 焦点 ---
-    Mod+Left  { focus-column-left; }
-    Mod+Down  { focus-window-down; }
-    Mod+Up    { focus-window-up; }
-    Mod+Right { focus-column-right; }
-    Mod+H     { focus-column-left; }
-    Mod+J     { focus-window-down; }
-    Mod+K     { focus-window-up; }
-    Mod+L     { focus-column-right; }
+    Mod+H     { focus-column-or-monitor-left; }
+    Mod+J     { focus-window-or-workspace-down; }
+    Mod+K     { focus-window-or-workspace-up; }
+    Mod+L     { focus-column-or-monitor-right; }
+
+    Mod+Left     { focus-column-or-monitor-left; }
+    Mod+Down     { focus-window-or-workspace-down; }
+    Mod+Up     { focus-window-or-workspace-up; }
+    Mod+Right     { focus-column-or-monitor-right; }
+
+    // Mod+Left  { focus-column-left; }
+    // Mod+Down  { focus-window-down; }
+    // Mod+Up    { focus-window-up; }
+    // Mod+Right { focus-column-right; }
+    // Mod+H     { focus-column-left; }
+    // Mod+J     { focus-window-down; }
+    // Mod+K     { focus-window-up; }
+    // Mod+L     { focus-column-right; }
 
     Mod+Home { focus-column-first; }
     Mod+0 { focus-column-first; }
@@ -121,14 +131,26 @@ binds {
     Mod+Shift+0  { focus-column-last; }
 
     // --- 移动 列/窗口 ---
-    Mod+Ctrl+Left  { move-column-left; }
-    Mod+Ctrl+Down  { move-window-down; }
-    Mod+Ctrl+Up    { move-window-up; }
-    Mod+Ctrl+Right { move-column-right; }
-    Mod+Ctrl+H     { move-column-left; }
-    Mod+Ctrl+J     { move-window-down; }
-    Mod+Ctrl+K     { move-window-up; }
-    Mod+Ctrl+L     { move-column-right; }
+    // 当到达列中的第一个或最后一个窗口时，跨工作区移动的替代命令。
+    Mod+Ctrl+H     { move-column-left-or-to-monitor-left; }
+    Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
+    Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
+    Mod+Ctrl+L     { move-column-right-or-to-monitor-right; }
+
+    Mod+Ctrl+Left     { move-column-left-or-to-monitor-left; }
+    Mod+Ctrl+Down     { move-window-down-or-to-workspace-down; }
+    Mod+Ctrl+Up     { move-window-up-or-to-workspace-up; }
+    Mod+Ctrl+Right     { move-column-right-or-to-monitor-right; }
+
+    // Mod+Ctrl+Left  { move-column-left; }
+    // Mod+Ctrl+Down  { move-window-down; }
+    // Mod+Ctrl+Up    { move-window-up; }
+    // Mod+Ctrl+Right { move-column-right; }
+
+    // Mod+Ctrl+H     { move-column-left; }
+    // Mod+Ctrl+J     { move-window-down; }
+    // Mod+Ctrl+K     { move-window-up; }
+    // Mod+Ctrl+L     { move-column-right; }
 
     Mod+Ctrl+Home { move-column-to-first; }
     Mod+Ctrl+0 { move-column-to-first; }
@@ -224,14 +246,8 @@ binds {
 
 
     // --- --- --- 工作空间行为快捷键 --- --- ---
-    // 当到达列中的第一个或最后一个窗口时，跨工作区移动的替代命令。
-    // Mod+J     { focus-window-or-workspace-down; }
-    // Mod+K     { focus-window-or-workspace-up; }
-    // Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
-    // Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
-
     // 或者，也有只移动单个窗口的命令：
-    // Mod+Shift+Ctrl+Left  { move-windw-to-monitor-left; }
+    // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
     // ...
 
     // 你也可以将整个工作区移动到另一个显示器：
@@ -295,15 +311,18 @@ binds {
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
     
     // --- 移动工作空间 ---
-    Mod+Shift+Page_Down { move-workspace-down; }
-    Mod+Shift+N         { move-workspace-down; }
     Mod+Alt+N         { move-workspace-down; }
-    Mod+Shift+Page_Up   { move-workspace-up; }
-    Mod+Shift+P         { move-workspace-up; }
     Mod+Alt+P         { move-workspace-up; }
-    Mod+Shift+U         { move-workspace-down; }
-    Mod+Shift+I         { move-workspace-up; }
 
+    Mod+Alt+Left  { move-workspace-to-monitor-left; }
+    Mod+Alt+Down  { move-workspace-to-monitor-down; }
+    Mod+Alt+Up  { move-workspace-to-monitor-up; }
+    Mod+Alt+Right  { move-workspace-to-monitor-right; }
+
+    Mod+Alt+H  { move-workspace-to-monitor-left; }
+    Mod+Alt+J  { move-workspace-to-monitor-down; }
+    Mod+Alt+K  { move-workspace-to-monitor-up; }
+    Mod+Alt+L  { move-workspace-to-monitor-right; }
 
     // --- --- --- 显示器行为快捷键 --- --- ---
     // 切换显示器焦点
@@ -317,11 +336,6 @@ binds {
     Mod+Shift+K     { focus-monitor-up; }
     Mod+Shift+L     { focus-monitor-right; }
 
-    Mod+Alt+H     { focus-monitor-left; }
-    Mod+Alt+J     { focus-monitor-down; }
-    Mod+Alt+K     { focus-monitor-up; }
-    Mod+Alt+L     { focus-monitor-right; }
-
     // 跨显示器移动列
     Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
     Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
@@ -332,12 +346,6 @@ binds {
     Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
     Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
     Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
-
-    Mod+Alt+Ctrl+H     { move-column-to-monitor-left; }
-    Mod+Alt+Ctrl+J     { move-column-to-monitor-down; }
-    Mod+Alt+Ctrl+K     { move-column-to-monitor-up; }
-    Mod+Alt+Ctrl+L     { move-column-to-monitor-right; }
-
 
     // --- --- --- 其它应用 --- --- ---
     // spawn 可用属性:
