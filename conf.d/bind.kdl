@@ -356,7 +356,7 @@ binds {
     //   repeat=false             — 禁用按键重复
     //   cooldown-ms=150          — 冷却时间，单位毫秒
     // 终端模拟器配置
-    Mod+T hotkey-overlay-title="终端模拟器 ghostty" { spawn "ghostty"; }
+    Mod+T hotkey-overlay-title="终端模拟器 kitty" { spawn "kitty"; }
     Ctrl+Alt+T hotkey-overlay-title="终端模拟器 alacritty" { spawn "alacritty"; }
 
     // 程序启动器配置
@@ -382,7 +382,7 @@ binds {
     Mod+Ctrl+S { screenshot-window; }
 
     // 打开剪切板历史
-    Mod+Ctrl+X { spawn "ghostty" "-e" "sh" "-c" "cliphist list | fzf | cliphist decode | wl-copy"; }
+    Mod+Ctrl+X { spawn "alacritty" "-e" "sh" "-c" "cliphist list | fzf | cliphist decode | wl-copy"; }
 
     // 开启/隐藏 状态栏
     // Mod+B { spawn "killall" "-SIGUSR1" "waybar"; }
